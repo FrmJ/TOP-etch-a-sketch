@@ -9,4 +9,14 @@ const generateBoard = (grid) => {
     }
 };
 
+const addEventListeners = () => {
+    const boxes = document.querySelectorAll("div.board-container > div");
+    boxes.forEach(box => {
+        box.addEventListener("mouseover", (e) => {
+            e.target.style.backgroundColor = "red";
+        })
+    })
+}
+
 generateBoard(12);
+addEventListeners();
