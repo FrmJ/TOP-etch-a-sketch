@@ -11,6 +11,7 @@ const generateBoard = (grid) => {
         box.classList = `grid-${i}`;
         box.style.height = `calc(100% / ${grid})`;
         box.style.width = `calc(100% / ${grid})`;
+        box.style.boxShadow = "0 0 1px black";
         board.append(box);
     }
 };
@@ -28,5 +29,5 @@ const randomizeColor = () => {
     COLOR = Math.floor(Math.random()*16777215).toString(16);
 };
 
-generateBoard(64);
+generateBoard(12);
 addEventListeners();
