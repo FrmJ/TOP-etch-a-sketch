@@ -20,9 +20,13 @@ const addEventListeners = () => {
     boxes.forEach(box => {
         box.addEventListener("mouseover", (e) => {
             e.target.style.backgroundColor = `#${COLOR}`;
-        })
-    })
-}
+        });
+    });
+};
+
+const randomizeColor = () => {
+    COLOR = Math.floor(Math.random()*16777215).toString(16);
+};
 
 generateBoard(64);
 addEventListeners();
