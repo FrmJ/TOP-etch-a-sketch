@@ -1,4 +1,5 @@
 let COLOR = "FF0000";
+let GRID_SIZE = 12;
 
 const generateBoard = (grid) => {
     const board = document.querySelector("div.board-container");
@@ -29,10 +30,29 @@ const addEventListeners = () => {
 const clearBoard = () => {
     const grids = document.querySelectorAll("div.board-container > div");
     grids.forEach((grid) => grid.remove());
-}
+};
 
 const randomizeColor = () => {
     COLOR = Math.floor(Math.random()*16777215).toString(16);
 };
 
-generateBoard(12);
+const updateGridSizeNumber = (size) => {
+    const gridText = document.querySelector("p.grid-number > span");
+    gridText.textContent = GRID_SIZE + " x " + GRID_SIZE;
+};
+
+(function() {
+    const gridSizeButton = document.querySelector("button.grid-button");
+    gridSizeButton.addEventListener("click", () => {
+        GRID_SIZE = prompt("Input size of grid");
+        if (GRID_SIZE <= 0 || GRID_SIZE > 100) {
+            alert("Grid size cannot be less than 0 or greater than 100");
+            return;
+        }
+        updateGridSizeNumber(GRID_SIZE);
+        clearBoard();
+        generateBoard(GRID_SIZE);
+    });
+})();
+
+generateBoard(GRID_SIZE);
