@@ -14,6 +14,7 @@ const generateBoard = (grid) => {
         box.style.boxShadow = "0 0 1px black";
         board.append(box);
     }
+    addEventListeners();
 };
 
 const addEventListeners = () => {
@@ -30,4 +31,3 @@ const randomizeColor = () => {
 };
 
 generateBoard(12);
-addEventListeners();
