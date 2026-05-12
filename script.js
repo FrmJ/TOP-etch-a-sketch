@@ -1,12 +1,13 @@
 let COLOR = "FF0000";
 let GRID_SIZE = 12;
+let RANDOMIZE = 0;
 
 const generateBoard = (grid) => {
     const board = document.querySelector("div.board-container");
     board.style.display = "flex";
     board.style.flexWrap = "wrap";
-    board.style.width = "70vw";
-    board.style.height = "70vw";
+    board.style.width = "50vw";
+    board.style.height = "70vh";
     for (let i = 0 ; i < grid**2; i++) {
         const box = document.createElement("div");
         box.classList = `grid-${i}`;
@@ -22,6 +23,9 @@ const addEventListeners = () => {
     const boxes = document.querySelectorAll("div.board-container > div");
     boxes.forEach(box => {
         box.addEventListener("mouseover", (e) => {
+            if (RANDOMIZE == 1) {
+                randomizeColor();
+            }
             e.target.style.backgroundColor = `#${COLOR}`;
         });
     });
@@ -52,6 +56,20 @@ const updateGridSizeNumber = (size) => {
         }
         updateGridSizeNumber(GRID_SIZE);
         clearBoard();
+    });
+})();
+
+(function() {
+    const randomizeButton = document.querySelector("button.randomize-button");
+    const randomToggle = document.querySelector("p.randomize-toggle > span");
+    randomizeButton.addEventListener("click", () => {
+        if (RANDOMIZE == 0) {
+            RANDOMIZE = 1;
+            randomToggle.textContent = "ON";
+        } else {
+            RANDOMIZE = 0;
+            randomToggle.textContent = "OFF";
+        }
     });
 })();
 
