@@ -30,6 +30,7 @@ const addEventListeners = () => {
 const clearBoard = () => {
     const grids = document.querySelectorAll("div.board-container > div");
     grids.forEach((grid) => grid.remove());
+    generateBoard(GRID_SIZE);
 };
 
 const randomizeColor = () => {
@@ -51,7 +52,6 @@ const updateGridSizeNumber = (size) => {
         }
         updateGridSizeNumber(GRID_SIZE);
         clearBoard();
-        generateBoard(GRID_SIZE);
     });
 })();
 
