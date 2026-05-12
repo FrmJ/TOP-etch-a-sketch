@@ -1,10 +1,16 @@
+let COLOR = "FF0000";
+
 const generateBoard = (grid) => {
     const board = document.querySelector("div.board-container");
-    for (let i = 0 ; i < grid; i++) {
+    board.style.display = "flex";
+    board.style.flexWrap = "wrap";
+    board.style.width = "70vw";
+    board.style.height = "70vw";
+    for (let i = 0 ; i < grid**2; i++) {
         const box = document.createElement("div");
         box.classList = `grid-${i}`;
-        box.style.height = "10px";
-        box.style.width = "10px";
+        box.style.height = `calc(100% / ${grid})`;
+        box.style.width = `calc(100% / ${grid})`;
         board.append(box);
     }
 };
@@ -13,10 +19,10 @@ const addEventListeners = () => {
     const boxes = document.querySelectorAll("div.board-container > div");
     boxes.forEach(box => {
         box.addEventListener("mouseover", (e) => {
-            e.target.style.backgroundColor = "red";
+            e.target.style.backgroundColor = `#${COLOR}`;
         })
     })
 }
 
-generateBoard(12);
+generateBoard(64);
 addEventListeners();
