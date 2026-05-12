@@ -26,6 +26,11 @@ const addEventListeners = () => {
     });
 };
 
+const clearBoard = () => {
+    const grids = document.querySelectorAll("div.board-container > div");
+    grids.forEach((grid) => grid.remove());
+}
+
 const randomizeColor = () => {
     COLOR = Math.floor(Math.random()*16777215).toString(16);
 };
